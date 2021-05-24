@@ -1,7 +1,6 @@
 const http = require('http');
-//const hostname = 'localhost';
-const port = process.env.PORT || '5000';
-var hostname;
+const hostname = 'localhost';
+const port = 3000;
 
 var friends = require("./friends.json"); // Once for all times
 
@@ -64,8 +63,10 @@ const server = http.createServer((request, response) => {
     response.end();
 });
 
-server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
+var server = app.listen(process.env.PORT || '5000', function ServerListner() {
+    var host = server.address().address;
+    var port = server.address().port;
+    console.log("Using Forms and Express, listening at http://%s:$%s", host, port);
 });
 
 
